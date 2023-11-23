@@ -9,6 +9,11 @@ alpha = 0.01;
 beta = 0.001;
 FE.Cg = alpha * FE.Mg + beta * FE.Kg
 
+
+%% Optionally ploy the structure
+plotmesh(FE.mesh)
+
+
 %% Generate strain interpolation matrix
 n_el = size(FE.mesh.topology, 1);
 
