@@ -4,7 +4,7 @@ topology = input.topology;
 
 
 
-sensors = [4, 6, 8, 9, 12];
+sensors = [12];
 
 
 f = figure;

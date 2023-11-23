@@ -1,7 +1,7 @@
 %% Generate a beam element model
 FE = FiniteElementModel();
 
-FE.from_xlsx('structures/paper_truss.xlsx');
+FE.from_xlsx('structures/lecture_7.xlsx');
 
 %% Assemble system matrices
 FE.assembly("beam", [1, 2, 3, 37, 38, 39]);
