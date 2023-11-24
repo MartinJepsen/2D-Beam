@@ -123,6 +123,7 @@ classdef FiniteElementModel < handle
                     A = self.mesh.element_properties.A(el);
                     E = self.mesh.element_properties.E(el);
                     rho = self.mesh.element_properties.rho(el);
+                    I = self.mesh.element_properties.I(el);
 
                     % Element stiffness matrix in local coordinates
                     k_1 = E * A / L;
