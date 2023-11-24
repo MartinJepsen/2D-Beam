@@ -37,6 +37,7 @@ classdef FiniteElementModel < handle
             self.mesh.topology = elements(:,[1,2]);
             self.mesh.element_properties.A = elements(:,3);
             self.mesh.element_properties.E = elements(:,4);
+            self.mesh.element_properties.E = elements(:,5);
             self.mesh.element_properties.rho = elements(:,6);
             self.mesh.n_node = size(self.mesh.coordinates,1);
             self.mesh.n_el = size(self.mesh.topology,1);
