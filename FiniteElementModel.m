@@ -115,11 +115,12 @@ classdef FiniteElementModel < handle
                     dof_element(el, :) = [dof_node(topology(el,1),:), dof_node(topology(el,2),:)];
 
                     % Transformation matrix
-                    T=[c s 0 0 0 0;
-                      -s c 0 0 0 0;
-                       0 0 1 0 0 0
-                       0 0 0 c s 0;
-                       0 0 0 -s c 0];
+                    T=[c s 0 0  0 0;
+                      -s c 0 0  0 0;
+                       0 0 1 0  0 0
+                       0 0 0 c  s 0;
+                       0 0 0 -s c 0
+                       0 0 0 0  0 1];
 
                     A = self.mesh.element_properties.A(el);
                     E = self.mesh.element_properties.E(el);
@@ -132,13 +133,12 @@ classdef FiniteElementModel < handle
                     k_3 = (6 * E * I) / L^2;
                     k_4 = (2 * E * I) / L;
 
-                    kel = [
-                      k_1  , 0   , 0      , -k_1, 0   , 0       ;
-                      0    , k_2 , k_3    , 0   , -k_2, k_3     ;
-                      0    , k_3 , 2 * k_4, 0   , -k_3, k_4     ;
-                      -k_1 , 0   , 0      , k_1 , 0   , 0       ;
-                      0    , -k_2, -k_3   , 0   , k_2 , k_3     ;
-                      0    , k_3 , k_4    , 0   , -k_3, 2 * k_4];
+                    kel = [k_1  , 0   , 0      , -k_1, 0   , 0       ;
+                           0    , k_2 , k_3    , 0   , -k_2, k_3     ;
+                           0    , k_3 , 2 * k_4, 0   , -k_3, k_4     ;
+                           -k_1 , 0   , 0      , k_1 , 0   , 0       ;
+                           0    , -k_2, -k_3   , 0   , k_2 , k_3     ;
+                           0    , k_3 , k_4    , 0   , -k_3, 2 * k_4];
 
                     mel = rho * A * L / 420 * [
                       140, 0      , 0        , 70 , 0      , 0       ;
